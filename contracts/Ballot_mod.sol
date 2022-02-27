@@ -50,26 +50,21 @@ contract Ballot_mod {
     // Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function giveRightToVote(address[] memory _voters) external {
-        // If the first argument of `require` evaluates
-        // to `false`, execution terminates and all
-        // changes to the state and to Ether balances
-        // are reverted.
-        // This used to consume all gas in old EVM versions, but
-        // not anymore.
-        // It is often a good idea to use `require` to check if
-        // functions are called correctly.
-        // As a second argument, you can also provide an
-        // explanation about what went wrong.
+        // If not chair person cancel execution
         require(
             msg.sender == chairperson,
             "Only chairperson can give right to vote."
         );
+        // Loop over all voters
         for(uint i=0; i<_voters.length; i++){
+            // If already voted cancel execution
             require(
                 !voters[_voters[i]].voted,
                 "The voter already voted."
             );
+            // If already has right to vate cancel execution
             require(voters[_voters[i]].weight == 0);
+            // Give the right to vote
             voters[_voters[i]].weight = 1;
         }
         

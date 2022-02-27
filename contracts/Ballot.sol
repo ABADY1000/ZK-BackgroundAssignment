@@ -50,25 +50,20 @@ contract Ballot {
     // Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function giveRightToVote(address voter) external{
-        // If the first argument of `require` evaluates
-        // to `false`, execution terminates and all
-        // changes to the state and to Ether balances
-        // are reverted.
-        // This used to consume all gas in old EVM versions, but
-        // not anymore.
-        // It is often a good idea to use `require` to check if
-        // functions are called correctly.
-        // As a second argument, you can also provide an
-        // explanation about what went wrong.
+        // If not chair person cancel execution
         require(
             msg.sender == chairperson,
             "Only chairperson can give right to vote."
         );
+        // If already voted cancel execution
         require(
             !voters[voter].voted,
             "The voter already voted."
         );
+        // If already has right to vate cancel execution
         require(voters[voter].weight == 0);
+
+        // Give the right to vote
         voters[voter].weight = 1;
     }
 
