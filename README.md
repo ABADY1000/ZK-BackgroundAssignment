@@ -1,15 +1,10 @@
-# Basic Sample Hardhat Project
+# Background Assignment
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project is a back ground assignment for ZKU (Zero Knowledge University), it is online study group aims for spreading the knowledge of ZKp (Zero Knowledge proof).
 
-Try running some of the following tasks:
+This assignment contains a meterials for simple solidity code and the JS script for deploying it on the chain.
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+It is also contains a Ballot modified code to enhance the cost of execution the contract's functions.
+
+
+Code is submitted and accepted by ZKU.
